@@ -1,6 +1,7 @@
 # BW SPORTS, Live Fixtures and Match Updates
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). <br>
+A live demo of this project has been deployed to heroku and can be accessed [Here](https://bw-sports.herokuapp.com).
 
 ## Available Scripts
 
