@@ -44,7 +44,7 @@ export const getFixtures = (league, season=2017) =>{
     return res.data;
   }).catch((e) =>{
     console.log(e);
-    return null;
+    return e;
   })
   
   return {
@@ -53,22 +53,25 @@ export const getFixtures = (league, season=2017) =>{
   }
 }
 
-export const getTeams = (league) =>{
-  const request = axios({
-    method: 'get',
-    url: `http://api.football-data.org/v2/competitions/${league}/teams`,
-    headers: authHeader
-  }).then((res) =>{
-    // console.log(res.data);
-    return res.data
-  }).catch((e) =>{
-    console.log(e);
-    return e
-  })
+export const getTeams = async (league) =>{
+  try {
+    let res = await axios({
+      method: 'get',
+      url: `http://api.football-data.org/v2/competitions/${league}/teams`,
+      headers: authHeader
+    });
   
-  return {
-    type:GET_TEAMS,
-    payload: request
+    return {
+      type:GET_TEAMS,
+      payload: res.data
+    }
+  } catch (e) {
+    console.log('==== Error Fetching Teams =====');
+    // return e
+    return {
+      type:GET_TEAMS,
+      payload: e
+    }
   }
 }
 
